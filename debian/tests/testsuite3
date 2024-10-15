@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Skip plugin tests for now - they leak references to breezy.testingplugins in sys.modules for some reason
+
+BRZ_PLUGIN_PATH=-site:-user /usr/bin/brz selftest -v --parallel=fork \
+  -Oselftest.timeout=6000 \
+  -x test_export_pot \
+  -x test_plugins
